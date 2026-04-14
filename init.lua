@@ -270,6 +270,15 @@ require('lazy').setup({
       'MunifTanjim/nui.nvim',
     },
     lazy = false, -- neo-tree will lazily load itself
+    config = function()
+      require('neo-tree').setup {
+        window = {
+          mappings = {
+            ['<space>'] = 'none',
+          },
+        },
+      }
+    end,
   },
 
   -- Alternatively, use `config = function() ... end` for full control over the configuration.

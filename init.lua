@@ -1,4 +1,4 @@
---[[
+`--[[
 
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
@@ -994,37 +994,41 @@ require('lazy').setup({
     },
     keys = {
       -- Move between buffers
-      { '<A-,>', '<Cmd>BufferPrevious<CR>',     desc = 'Previous buffer' },
-      { '<A-.>', '<Cmd>BufferNext<CR>',         desc = 'Next buffer' },
-
+      { '<leader>bp', '<Cmd>BufferPrevious<CR>',     desc = '[B]uffer [P]revious' },
+      { '<leader>bn', '<Cmd>BufferNext<CR>',         desc = '[B]uffer [N]ext' },
+    
+      -- Quick cycle alternatives (no leader, faster)
+      { '[b',         '<Cmd>BufferPrevious<CR>',     desc = 'Previous buffer' },
+      { ']b',         '<Cmd>BufferNext<CR>',         desc = 'Next buffer' },
+    
       -- Re-order buffers
-      { '<A-<>', '<Cmd>BufferMovePrevious<CR>', desc = 'Move buffer left' },
-      { '<A->>', '<Cmd>BufferMoveNext<CR>',     desc = 'Move buffer right' },
-
-      -- Jump directly to a buffer by position
-      { '<A-1>', '<Cmd>BufferGoto 1<CR>',       desc = 'Buffer 1' },
-      { '<A-2>', '<Cmd>BufferGoto 2<CR>',       desc = 'Buffer 2' },
-      { '<A-3>', '<Cmd>BufferGoto 3<CR>',       desc = 'Buffer 3' },
-      { '<A-4>', '<Cmd>BufferGoto 4<CR>',       desc = 'Buffer 4' },
-      { '<A-5>', '<Cmd>BufferGoto 5<CR>',       desc = 'Buffer 5' },
-      { '<A-6>', '<Cmd>BufferGoto 6<CR>',       desc = 'Buffer 6' },
-      { '<A-7>', '<Cmd>BufferGoto 7<CR>',       desc = 'Buffer 7' },
-      { '<A-8>', '<Cmd>BufferGoto 8<CR>',       desc = 'Buffer 8' },
-      { '<A-9>', '<Cmd>BufferGoto 9<CR>',       desc = 'Buffer 9' },
-      { '<A-0>', '<Cmd>BufferLast<CR>',         desc = 'Last buffer' },
-
+      { '<leader>b,', '<Cmd>BufferMovePrevious<CR>', desc = '[B]uffer Move Left' },
+      { '<leader>b.', '<Cmd>BufferMoveNext<CR>',     desc = '[B]uffer Move Right' },
+    
+      -- Jump to buffer by position
+      { '<leader>1',  '<Cmd>BufferGoto 1<CR>',       desc = 'Buffer 1' },
+      { '<leader>2',  '<Cmd>BufferGoto 2<CR>',       desc = 'Buffer 2' },
+      { '<leader>3',  '<Cmd>BufferGoto 3<CR>',       desc = 'Buffer 3' },
+      { '<leader>4',  '<Cmd>BufferGoto 4<CR>',       desc = 'Buffer 4' },
+      { '<leader>5',  '<Cmd>BufferGoto 5<CR>',       desc = 'Buffer 5' },
+      { '<leader>6',  '<Cmd>BufferGoto 6<CR>',       desc = 'Buffer 6' },
+      { '<leader>7',  '<Cmd>BufferGoto 7<CR>',       desc = 'Buffer 7' },
+      { '<leader>8',  '<Cmd>BufferGoto 8<CR>',       desc = 'Buffer 8' },
+      { '<leader>9',  '<Cmd>BufferGoto 9<CR>',       desc = 'Buffer 9' },
+      { '<leader>0',  '<Cmd>BufferLast<CR>',         desc = 'Last buffer' },
+    
       -- Pin and close
-      { '<A-p>', '<Cmd>BufferPin<CR>',          desc = 'Pin buffer' },
-      { '<A-c>', '<Cmd>BufferClose<CR>',        desc = 'Close buffer' },
-
+      { '<leader>bP', '<Cmd>BufferPin<CR>',          desc = '[B]uffer [P]in' },
+      { '<leader>bc', '<Cmd>BufferClose<CR>',        desc = '[B]uffer [C]lose' },
+    
       -- Magic buffer-picking mode (press a letter to jump)
-      { '<C-p>', '<Cmd>BufferPick<CR>',         desc = 'Pick buffer' },
-
-      -- Sort
-      { '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', desc = 'Order by buffer number' },
-      { '<Space>bn', '<Cmd>BufferOrderByName<CR>',         desc = 'Order by name' },
-      { '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>',    desc = 'Order by directory' },
-      { '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>',     desc = 'Order by language' },
+      { '<leader>bj', '<Cmd>BufferPick<CR>',         desc = '[B]uffer [J]ump (pick)' },
+    
+      -- Sort under bo (buffer order) sub-prefix
+      { '<leader>bob', '<Cmd>BufferOrderByBufferNumber<CR>', desc = 'Order by buffer number' },
+      { '<leader>boN', '<Cmd>BufferOrderByName<CR>',         desc = 'Order by name' },
+      { '<leader>bod', '<Cmd>BufferOrderByDirectory<CR>',    desc = 'Order by directory' },
+      { '<leader>bol', '<Cmd>BufferOrderByLanguage<CR>',     desc = 'Order by language' },
     },
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },

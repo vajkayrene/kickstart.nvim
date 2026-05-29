@@ -17,19 +17,31 @@ return {
   },
   ---@module 'neo-tree'
   ---@type neotree.Config
-  opts = {
-    window = {
-      winoptions = {
-        number = true,         -- Absolute line numbers
-        relativenumber = false, -- Change to true if you prefer relative numbers
-      },
-    },
-    filesystem = {
-      window = {
-        mappings = {
-          ['\\'] = 'close_window',
+  config = function()
+      -- 1. Run Setup explicitly 
+      require('neo-tree').setup({
+        window = {
+          winoptions = {
+            number = true,         -- Force absolute numbers
+            relativenumber = false, -- Change to true if you prefer relative numbers
+          },
         },
-      },
-    },
-  },
+        filesystem = {
+          window = {
+            mappings = {
+              ['\\'] = 'close_window',
+            },
+          },
+        },
+      })
+  
+      -- 2. Global fallback API hook to force it if Neo-tree's internal UI engine fails to paint it
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'neo-tree',
+        callback = function()
+          vim.opt_local.number = true
+          vim.opt_local.signcolumn = 'yes' -- Ensures space for numbers isn't collapsed
+        end,
+      })
+    end,
 }

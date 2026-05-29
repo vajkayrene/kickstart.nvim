@@ -187,6 +187,9 @@ require('lazy').setup({
     config = function()
       require('neo-tree').setup {
         window = {
+          winoptions = {
+            number = true,         -- Enables absolute line numbers
+          },
           mappings = {
             ['<space>'] = 'none',
           },

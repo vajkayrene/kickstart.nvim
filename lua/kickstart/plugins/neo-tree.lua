@@ -18,6 +18,12 @@ return {
   ---@module 'neo-tree'
   ---@type neotree.Config
   opts = {
+    window = {
+      winoptions = {
+        number = true,         -- Absolute line numbers
+        relativenumber = false, -- Change to true if you prefer relative numbers
+      },
+    },
     filesystem = {
       window = {
         mappings = {

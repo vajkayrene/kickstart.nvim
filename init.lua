@@ -175,34 +175,6 @@ rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
   { 'NMAC427/guess-indent.nvim', opts = {} },
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v3.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',
-      'MunifTanjim/nui.nvim',
-    },
-    lazy = false, -- neo-tree will lazily load itself
-    config = function()
-      require('neo-tree').setup {
-        window = {
-          mappings = {
-            ['<space>'] = 'none',
-          },
-          event_handlers = {
-            {
-              event = "neo_tree_buffer_enter",
-              handler = function()
-                vim.opt_local.number = true          -- Turn on absolute line numbers
-                vim.opt_local.relativenumber = false  -- Turn on relative line numbers (set to false if you want strict 1, 2, 3...)
-              end,
-            },
-          },
-        },
-      }
-    end,
-  },
 
   -- Alternatively, use `config = function() ... end` for full control over the configuration.
   -- If you prefer to call `setup` explicitly, use:

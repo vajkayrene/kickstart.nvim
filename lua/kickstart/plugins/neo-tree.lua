@@ -15,33 +15,24 @@ return {
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
-  ---@module 'neo-tree'
-  ---@type neotree.Config
-  config = function()
-      -- 1. Run Setup explicitly 
-      require('neo-tree').setup({
-        window = {
-          winoptions = {
-            number = true,         -- Force absolute numbers
-            relativenumber = false, -- Change to true if you prefer relative numbers
-          },
-        },
-        filesystem = {
-          window = {
-            mappings = {
-              ['\\'] = 'close_window',
-            },
-          },
-        },
-      })
-  
-      -- 2. Global fallback API hook to force it if Neo-tree's internal UI engine fails to paint it
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = 'neo-tree',
-        callback = function()
+  opts = {
+    event_handlers = {
+      {
+        event = "neo_tree_buffer_enter",
+        handler = function()
+          -- This forces Neovim's rendering engine to display the gutters
           vim.opt_local.number = true
-          vim.opt_local.signcolumn = 'yes' -- Ensures space for numbers isn't collapsed
+          vim.opt_local.relativenumber = false -- Set to true if you want relative numbers
+          vim.opt_local.signcolumn = "yes"
         end,
-      })
-    end,
+      },
+    },
+    filesystem = {
+      window = {
+        mappings = {
+          ['\\'] = 'close_window',
+        },
+      },
+    },
+  },
 }

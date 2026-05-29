@@ -187,11 +187,17 @@ require('lazy').setup({
     config = function()
       require('neo-tree').setup {
         window = {
-          winoptions = {
-            number = true,         -- Enables absolute line numbers
-          },
           mappings = {
             ['<space>'] = 'none',
+          },
+          event_handlers = {
+            {
+              event = "neo_tree_buffer_enter",
+              handler = function()
+                vim.opt_local.number = true          -- Turn on absolute line numbers
+                vim.opt_local.relativenumber = false  -- Turn on relative line numbers (set to false if you want strict 1, 2, 3...)
+              end,
+            },
           },
         },
       }

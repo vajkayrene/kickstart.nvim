@@ -13,7 +13,7 @@ return {
   },
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
-    { '<leader>e', ':Neotree current', desc = 'Neotree fullscreen', silent = true },
+    { '<leader>e', ':Neotree current<CR>', desc = 'Neotree fullscreen', silent = true },
   },
   opts = {
     event_handlers = {
